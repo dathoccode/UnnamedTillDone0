@@ -97,3 +97,9 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+#vs code
+/.vscode
+
+#imported stuff not filtered should not be pushed
+/Assets/ImportedStuff
