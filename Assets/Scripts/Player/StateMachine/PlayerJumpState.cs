@@ -6,16 +6,21 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void Enter()
     {
-        throw new System.NotImplementedException();
+        ctx.animator.SetTrigger("Jump");
+        ctx.Jump(ctx.jumpForce);
     }
 
     public override void Exit()
     {
-        throw new System.NotImplementedException();
+        ctx.animator.ResetTrigger("Jump");
     }
 
     public override void Update()
     {
-        throw new System.NotImplementedException();
+        Vector2 moveInput = InputManager.Instance.GetMoveInput();
+        if (ctx.IsGrounded())
+        {
+            ctx.SwitchState(new PlayerIdleState(ctx));
+        }
     }
 }

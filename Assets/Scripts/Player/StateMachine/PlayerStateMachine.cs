@@ -5,10 +5,17 @@ public class PlayerStateMachine : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] public Animator animator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
+    [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundCheckRadius;
 
+    [Header("Movement")]
+    [SerializeField] public float moveSpeed = default;
+    [SerializeField] public float jumpForce = default;
 
     private PlayerBaseState currentState;
 
@@ -42,6 +49,18 @@ public class PlayerStateMachine : MonoBehaviour
 
     public void Move(float moveSpeed, Vector2 moveInput)
     {
+        if (moveInput.x < 0) spriteRenderer.flipX = true;
+        else if (moveInput.x > 0) spriteRenderer.flipX = false;
+        rb.linearVelocityX = moveInput.x * moveSpeed;
+    }
 
+    private void OnDrawGizmosSelected()
+    {
+
+        if (IsGrounded())
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        }
     }
 }

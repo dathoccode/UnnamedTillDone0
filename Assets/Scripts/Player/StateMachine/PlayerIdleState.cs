@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -6,12 +7,12 @@ public class PlayerIdleState : PlayerBaseState
     public PlayerIdleState(PlayerStateMachine context) : base(context) { }
     public override void Enter()
     {
-        //TODO: "set player idle animation";
+
     }
 
     public override void Exit()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void Update()
