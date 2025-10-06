@@ -6,12 +6,11 @@ public class PlayerRunState : PlayerBaseState
     public PlayerRunState(PlayerStateMachine context) : base(context) { }
     public override void Enter()
     {
-        ctx.animator.SetBool("Run", true);
+        ctx.animator.Play("Player_Run");
     }
 
     public override void Exit()
     {
-        ctx.animator.SetBool("Run", false);
     }
 
     public override void Update()

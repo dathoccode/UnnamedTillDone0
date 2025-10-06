@@ -7,12 +7,11 @@ public class PlayerIdleState : PlayerBaseState
     public PlayerIdleState(PlayerStateMachine context) : base(context) { }
     public override void Enter()
     {
-
+        ctx.animator.Play("Player_Idle");
     }
 
     public override void Exit()
     {
-        
     }
 
     public override void Update()

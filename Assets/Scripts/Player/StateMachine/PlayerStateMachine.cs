@@ -19,6 +19,20 @@ public class PlayerStateMachine : MonoBehaviour
 
     private PlayerBaseState currentState;
 
+    //
+    public PlayerIdleState IdleState { get; private set; }
+    public PlayerRunState RunState { get; private set; }
+    public PlayerJumpState JumpState { get; private set; }
+    public PlayerDeathState DeathState { get; private set; }
+
+
+    private void Awake()
+    {
+        IdleState = new PlayerIdleState(this);
+        RunState = new PlayerRunState(this);
+        JumpState = new PlayerJumpState(this);
+        DeathState = new PlayerDeathState(this);
+    }
     private void Start()
     {
         currentState = new PlayerIdleState(this);
